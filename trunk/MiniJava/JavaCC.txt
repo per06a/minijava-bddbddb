@@ -1,0 +1,18 @@
+The "easiest" way to get the JavaCC project is to check it out with CVS.
+
+File -> New -> Project -> CVS -> Checkout Project From CVS
+
+Then enter the following fields:
+Server = cvs.dev.java.net
+Path = /cvs
+Username = your_user_name
+Password = your_password
+
+Then click Next, and Select a Module. It will probably take a while to load them all.
+Select the javacc module, and check it out.
+
+Then add the following to your shell setup (Unix):
+JAVACC_HOME=<some_path_to>/javacc
+JAVACC_PATH=$JAVACC_HOME/bin
+
+It's the same in Windows, but you need to add it to the environment variables.
