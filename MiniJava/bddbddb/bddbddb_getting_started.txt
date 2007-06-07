@@ -1,0 +1,127 @@
+Getting Started With bddbddb
+============================
+Roy Shea <roy@cs.ucla.edu>
+Akhilesh Singhania <akhi3030@gmail.com>
+
+
+Take a look at the link:http://bddbddb.sourceforge.net/[bddbddb] project for
+access to conference papers and source code.  Unfortunately, the
+documentation seems to be a bit sparse.  This guide describes how to write a
+very basic set of constraints in datalog and solve the system using bddbddb.
+
+Datalog Description
+-------------------
+
+The following is a datalog description of set intersection.  The domain
+contains small integers.  Input are two sets of numbers: `X` and `Y`.  The
+output will be a set named `Intersection`.  A single rule is used to place
+elements from both `X` and `Y` into `Intersection` called
+`intersection.txt`:
+
+----
+# Domains
+G 256
+
+
+# Relations
+
+# Input sets to intersect
+X (a:G) inputtuples
+Y (b:G) inputtuples
+
+# Output of "X intersect Y"
+Intersection (i:G) output
+
+
+# Rules
+Intersection (i) :- X(i), Y(i).
+----
+
+
+Constraint Files
+----------------
+
+The data log file notes that `X` and `Y` and `inputtuples`.  Input tuple
+files have a simple format with one column for each member of the relation.
+The file name corresponds with the relation name and ends in "tuples".  For
+this example we use `X.tuples`:
+
+----
+# G0:256
+1
+2
+3
+4
+5
+6
+----
+
+and `Y.tuples`:
+
+----
+# G0:256
+4
+5
+6
+7
+8
+9
+10
+----
+
+Note the magic numbering at the top of the file.  We note that members in a
+tuples file are from domain G.  Since a tuples file may have multiple
+members from a domain, each occurrence of a domain is numbered starting with
+zero.
+
+
+Solving Constraints
+-------------------
+
+Grab the bddbddb jar file and then:
+
+----
+java -jar ../bddbddb-full.jar intersection.txt
+----
+
+This generates `rbddinfo` and `Intersection.bdd`.  The name of the main
+output file `Intersection.bdd` is derived from the name of the output
+specified in the datalog file: `Intersection`.  Since the specification uses
+`output` the generated output file is in a bdd format with the extension
+`bdd`.
+
+
+Getting Data Out of bdd Files
+-----------------------------
+
+The bdd representation is not easy to read by hand.  Actually, I'm not yet
+sure how to read it by hand.  So data must be extracted from it.  The
+following datalog program is a simple pass through filter that dumps a bdd
+file with a single field to a tuple file called `dump.txt`:
+
+----
+# Domains
+G 256
+
+# This is a comment
+
+Intersection (i:G) input
+Dump (o:G) outputtuples
+
+# Rules 
+Dump (x) :- Intersection (x).
+---- 
+
+Execute:
+
+----
+java -jar ../bddbddb-full.jar dump.txt
+----
+
+This generates `Dump.tuples`.  Note that this time we specified
+`outputtuples` rather than `output`.  This additional filtering step is
+recommended since, for more complex programs, the bdd file can describe a
+huge number of tuples in a small space.  Rather than dumping all of these to
+tuple output, it is a good idea to filter out only the results you are
+interested.
+
