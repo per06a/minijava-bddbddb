@@ -1,0 +1,26 @@
+
+NOTES:
+
+Whaley PLDI '05: section 3.2, Program Representation. 
+They talk about a front-end translating the program to a set of relations understood by the database. 
+Need to figure out what MiniJava chuncks are relevant to the rulesets given in the '04 paper
+
+PLDI '04:
+vP0: V × H is the initial variable points-to relation extracted
+from object allocation statements in the source program.
+vP0(v, h) means there is an invocation site h that assigns
+a newly allocate object to variable v.
+	+ IR -> inputtuple : something like print the contents of an AllocationStatement
+
+TODO:
+1. Figure out and write down HOW we want to represent MiniJava inside of bddbddb
+	+ Are the abstractions as specified in the PLDI '04 paper sufficient?
+	+ If not, what else do we need?
+
+2. Implement the PLDI '04 algorithms in bddbddb
+	+ This is a breeze if the representation is unchanged, just copy, paste & attribute to Whaley
+	+ Else, need to modify the algorithms as needed
+	
+3. Write the front-end conversion of MiniJava source to output tuples
+	+ Recommend some form of IR, since the PLDI '04 paper only talks about a few abstractions
+	+ Mapping the IR to the inputtuple format should then be relatively easy
