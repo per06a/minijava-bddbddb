@@ -54,7 +54,7 @@ TOKEN :
    | <LT: "<">
    | <PLUS: "+">
    | <MINUS: "-">
-   | <AND: "&">
+   | <AND: "&&">
    | <NOT: "!">
    | <BOOLEAN: "boolean">
    | <CLASS: "class">
@@ -667,7 +667,7 @@ Expression Expression() :
 }
 {
    (
-      LOOKAHEAD(PrimaryExpression() "&")
+      LOOKAHEAD(PrimaryExpression() "&&")
       n1=AndExpression()
       { n0 = new NodeChoice(n1, 0); }
    |
@@ -717,7 +717,7 @@ AndExpression AndExpression() :
 }
 {
    n0=PrimaryExpression()
-   n2="&" { n1 = JTBToolkit.makeNodeToken(n2); }
+   n2="&&" { n1 = JTBToolkit.makeNodeToken(n2); }
    n3=PrimaryExpression()
    
    { return new AndExpression(n0,n1,n3); }

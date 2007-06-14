@@ -5,39 +5,41 @@
 package syntaxtree;
 
 /**
- * Grammar production:
- * f0 -> ","
- * f1 -> FormalParameter()
+ * Grammar production: f0 -> "," f1 -> FormalParameter()
  */
 public class FormalParameterRest implements Node {
-   /**
+	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-public NodeToken f0;
-   public FormalParameter f1;
+	private static final long serialVersionUID = 8426329827843847205L;
 
-   public FormalParameterRest(NodeToken n0, FormalParameter n1) {
-      f0 = n0;
-      f1 = n1;
-   }
+	public NodeToken f0;
 
-   public FormalParameterRest(FormalParameter n0) {
-      f0 = new NodeToken(",");
-      f1 = n0;
-   }
+	public FormalParameter f1;
 
-   public void accept(visitor.Visitor v) {
-      v.visit(this);
-   }
-   public <R,A> R accept(visitor.GJVisitor<R,A> v, A argu) {
-      return v.visit(this,argu);
-   }
-   public <R> R accept(visitor.GJNoArguVisitor<R> v) {
-      return v.visit(this);
-   }
-   public <A> void accept(visitor.GJVoidVisitor<A> v, A argu) {
-      v.visit(this,argu);
-   }
+	public FormalParameterRest(NodeToken n0, FormalParameter n1) {
+		f0 = n0;
+		f1 = n1;
+	}
+
+	public FormalParameterRest(FormalParameter n0) {
+		f0 = new NodeToken(",");
+		f1 = n0;
+	}
+
+	public void accept(visitor.Visitor v) {
+		v.visit(this);
+	}
+
+	public <R, A> R accept(visitor.GJVisitor<R, A> v, A argu) {
+		return v.visit(this, argu);
+	}
+
+	public <R> R accept(visitor.GJNoArguVisitor<R> v) {
+		return v.visit(this);
+	}
+
+	public <A> void accept(visitor.GJVoidVisitor<A> v, A argu) {
+		v.visit(this, argu);
+	}
 }
-

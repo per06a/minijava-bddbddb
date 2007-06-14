@@ -5,39 +5,35 @@
 package syntaxtree;
 
 /**
- * Grammar production:
- * f0 -> IntegerLiteral()
- *       | TrueLiteral()
- *       | FalseLiteral()
- *       | Identifier()
- *       | ThisExpression()
- *       | ArrayAllocationExpression()
- *       | AllocationExpression()
- *       | NotExpression()
- *       | BracketExpression()
+ * Grammar production: f0 -> IntegerLiteral() | TrueLiteral() | FalseLiteral() |
+ * Identifier() | ThisExpression() | ArrayAllocationExpression() |
+ * AllocationExpression() | NotExpression() | BracketExpression()
  */
 public class PrimaryExpression implements Node {
-   /**
+	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-public NodeChoice f0;
+	private static final long serialVersionUID = -4964323311361890984L;
 
-   public PrimaryExpression(NodeChoice n0) {
-      f0 = n0;
-   }
+	public NodeChoice f0;
 
-   public void accept(visitor.Visitor v) {
-      v.visit(this);
-   }
-   public <R,A> R accept(visitor.GJVisitor<R,A> v, A argu) {
-      return v.visit(this,argu);
-   }
-   public <R> R accept(visitor.GJNoArguVisitor<R> v) {
-      return v.visit(this);
-   }
-   public <A> void accept(visitor.GJVoidVisitor<A> v, A argu) {
-      v.visit(this,argu);
-   }
+	public PrimaryExpression(NodeChoice n0) {
+		f0 = n0;
+	}
+
+	public void accept(visitor.Visitor v) {
+		v.visit(this);
+	}
+
+	public <R, A> R accept(visitor.GJVisitor<R, A> v, A argu) {
+		return v.visit(this, argu);
+	}
+
+	public <R> R accept(visitor.GJNoArguVisitor<R> v) {
+		return v.visit(this);
+	}
+
+	public <A> void accept(visitor.GJVoidVisitor<A> v, A argu) {
+		v.visit(this, argu);
+	}
 }
-

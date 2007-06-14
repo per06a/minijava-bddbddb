@@ -36,7 +36,7 @@ TOKEN :
 | < LT: "<" >
 | < PLUS: "+" >
 | < MINUS: "-" >
-| < AND : "&" >   
+| < AND : "&&" >   
 | < NOT : "!" >   
 | < BOOLEAN: "boolean" >   
 | < CLASS: "class" >
@@ -278,7 +278,7 @@ void PrintStatement() :
 void Expression() :
 {}
 {
-  LOOKAHEAD( PrimaryExpression() "&" )
+  LOOKAHEAD( PrimaryExpression() "&&" )
   AndExpression()
 |
   LOOKAHEAD( PrimaryExpression() "<" )
@@ -308,7 +308,7 @@ void Expression() :
 void AndExpression() :
 {} 
 {
-  PrimaryExpression() "&" PrimaryExpression()
+  PrimaryExpression() "&&" PrimaryExpression()
 }
 
 void CompareExpression() :
