@@ -5,35 +5,37 @@
 package syntaxtree;
 
 /**
- * Grammar production:
- * f0 -> "int"
+ * Grammar production: f0 -> "int"
  */
 public class IntegerType implements Node {
-   /**
+	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-public NodeToken f0;
+	private static final long serialVersionUID = -7035169637142282387L;
 
-   public IntegerType(NodeToken n0) {
-      f0 = n0;
-   }
+	public NodeToken f0;
 
-   public IntegerType() {
-      f0 = new NodeToken("int");
-   }
+	public IntegerType(NodeToken n0) {
+		f0 = n0;
+	}
 
-   public void accept(visitor.Visitor v) {
-      v.visit(this);
-   }
-   public <R,A> R accept(visitor.GJVisitor<R,A> v, A argu) {
-      return v.visit(this,argu);
-   }
-   public <R> R accept(visitor.GJNoArguVisitor<R> v) {
-      return v.visit(this);
-   }
-   public <A> void accept(visitor.GJVoidVisitor<A> v, A argu) {
-      v.visit(this,argu);
-   }
+	public IntegerType() {
+		f0 = new NodeToken("int");
+	}
+
+	public void accept(visitor.Visitor v) {
+		v.visit(this);
+	}
+
+	public <R, A> R accept(visitor.GJVisitor<R, A> v, A argu) {
+		return v.visit(this, argu);
+	}
+
+	public <R> R accept(visitor.GJNoArguVisitor<R> v) {
+		return v.visit(this);
+	}
+
+	public <A> void accept(visitor.GJVoidVisitor<A> v, A argu) {
+		v.visit(this, argu);
+	}
 }
-

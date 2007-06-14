@@ -5,34 +5,36 @@
 package syntaxtree;
 
 /**
- * Grammar production:
- * f0 -> Type()
- * f1 -> Identifier()
+ * Grammar production: f0 -> Type() f1 -> Identifier()
  */
 public class FormalParameter implements Node {
-   /**
+	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-public Type f0;
-   public Identifier f1;
+	private static final long serialVersionUID = -2755436285114793177L;
 
-   public FormalParameter(Type n0, Identifier n1) {
-      f0 = n0;
-      f1 = n1;
-   }
+	public Type f0;
 
-   public void accept(visitor.Visitor v) {
-      v.visit(this);
-   }
-   public <R,A> R accept(visitor.GJVisitor<R,A> v, A argu) {
-      return v.visit(this,argu);
-   }
-   public <R> R accept(visitor.GJNoArguVisitor<R> v) {
-      return v.visit(this);
-   }
-   public <A> void accept(visitor.GJVoidVisitor<A> v, A argu) {
-      v.visit(this,argu);
-   }
+	public Identifier f1;
+
+	public FormalParameter(Type n0, Identifier n1) {
+		f0 = n0;
+		f1 = n1;
+	}
+
+	public void accept(visitor.Visitor v) {
+		v.visit(this);
+	}
+
+	public <R, A> R accept(visitor.GJVisitor<R, A> v, A argu) {
+		return v.visit(this, argu);
+	}
+
+	public <R> R accept(visitor.GJNoArguVisitor<R> v) {
+		return v.visit(this);
+	}
+
+	public <A> void accept(visitor.GJVoidVisitor<A> v, A argu) {
+		v.visit(this, argu);
+	}
 }
-

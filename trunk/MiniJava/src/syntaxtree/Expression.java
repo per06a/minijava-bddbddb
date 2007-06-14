@@ -5,39 +5,35 @@
 package syntaxtree;
 
 /**
- * Grammar production:
- * f0 -> AndExpression()
- *       | CompareExpression()
- *       | PlusExpression()
- *       | MinusExpression()
- *       | TimesExpression()
- *       | ArrayLookup()
- *       | ArrayLength()
- *       | MessageSend()
- *       | PrimaryExpression()
+ * Grammar production: f0 -> AndExpression() | CompareExpression() |
+ * PlusExpression() | MinusExpression() | TimesExpression() | ArrayLookup() |
+ * ArrayLength() | MessageSend() | PrimaryExpression()
  */
 public class Expression implements Node {
-   /**
+	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-public NodeChoice f0;
+	private static final long serialVersionUID = 8472998114812489176L;
 
-   public Expression(NodeChoice n0) {
-      f0 = n0;
-   }
+	public NodeChoice f0;
 
-   public void accept(visitor.Visitor v) {
-      v.visit(this);
-   }
-   public <R,A> R accept(visitor.GJVisitor<R,A> v, A argu) {
-      return v.visit(this,argu);
-   }
-   public <R> R accept(visitor.GJNoArguVisitor<R> v) {
-      return v.visit(this);
-   }
-   public <A> void accept(visitor.GJVoidVisitor<A> v, A argu) {
-      v.visit(this,argu);
-   }
+	public Expression(NodeChoice n0) {
+		f0 = n0;
+	}
+
+	public void accept(visitor.Visitor v) {
+		v.visit(this);
+	}
+
+	public <R, A> R accept(visitor.GJVisitor<R, A> v, A argu) {
+		return v.visit(this, argu);
+	}
+
+	public <R> R accept(visitor.GJNoArguVisitor<R> v) {
+		return v.visit(this);
+	}
+
+	public <A> void accept(visitor.GJVoidVisitor<A> v, A argu) {
+		v.visit(this, argu);
+	}
 }
-
