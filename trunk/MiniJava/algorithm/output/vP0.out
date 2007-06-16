@@ -1,0 +1,7 @@
+vP0 (TV, TV_Start_root)
+vP0 (Tree, MyVisitor)
+vP0 (TV_Start_root, MyVisitor)
+vP0 (MyVisitor, TV)
+vP0 (TV_Start_v, TV)
+vP0 (Tree, TV_Start_v)
+vP0 (Tree_Insert_new_node, TV_Start_v)

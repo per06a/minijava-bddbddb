@@ -1,0 +1,15 @@
+### DOMAINS
+
+V 256 var.map
+H 256 heap.map
+
+### RELATIONS
+
+vP0    (variable: V, heap: H) inputtuples
+assign (dest: V, source: V)   inputtuples
+vP     (variable: V, heap: H) outputtuples
+
+### RULES
+
+vP (v,h)  :- vP0(v,h).
+vP (v1,h) :- assign(v1,v2), vP(v2,h).

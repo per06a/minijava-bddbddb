@@ -1,8 +1,0 @@
-#!/bin/sh
-JAR="`dirname $0`/lib/jtb.jar"
-
-case "`uname`" in
-     CYGWIN*) JAR="`cygpath --windows -- "$JAR"`" ;;
-esac
-
-java -jar "$JAR" "$@"
